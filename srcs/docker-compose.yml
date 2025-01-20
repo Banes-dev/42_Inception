@@ -31,5 +31,5 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/ehay/data/database
+      device: /home/ehay/data/db
   # wordpress:

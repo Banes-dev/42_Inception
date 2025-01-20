@@ -12,6 +12,7 @@ EXPOSE 3306
 
 # Ajouter le script pour init bdd
 ADD tools/entry.sh /scripts/entry.sh
+RUN chmod +x /scripts/entry.sh
 
 # Script qui va s'executer au demarrage
 ENTRYPOINT ["/scripts/entry.sh"]
