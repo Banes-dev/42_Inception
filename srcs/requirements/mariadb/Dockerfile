@@ -10,7 +10,7 @@ RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
 # Exposer le port 3306 pour MariaDB
 EXPOSE 3306
 
-#
+# Ajouter le script pour init bdd
 ADD tools/entry.sh /scripts/entry.sh
 
 # Script qui va s'executer au demarrage

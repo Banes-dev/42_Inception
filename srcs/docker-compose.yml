@@ -2,27 +2,26 @@ services:
   mariadb:
     container_name: mariadb
     hostname: mariadb
-  build:
-    context: ./requirements/mariadb
-    dockerfile: Dockerfile
-  networks:
-    - inception
-  expose:
-    - 3306
-  restart: always
-  env_file:
-    - path: .env
-      required: true
-  volumes:
-    - mariadb:/var/lib/mysql
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    networks:
+      - inception
+    expose:
+      - 3306
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - mariadb-data:/var/lib/mysql
 
-  nginx:
+  # nginx:
 
-  wordpress:
+  # wordpress:
 
 
 networks:
-  incecption:
+  inception:
     name: inception
     driver: bridge
 
@@ -33,4 +32,4 @@ volumes:
       o: bind
       type: none
       device: /home/ehay/data/database
-  wordpress:
+  # wordpress:
