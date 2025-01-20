@@ -15,7 +15,21 @@ services:
     volumes:
       - mariadb-data:/var/lib/mysql
 
-  # nginx:
+  nginx:
+    container_name: nginx
+    hostname: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    networks:
+      - inception
+    expose:
+      - 443:443
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html:ro
 
   # wordpress:
 
@@ -32,4 +46,8 @@ volumes:
       o: bind
       type: none
       device: /home/ehay/data/db
-  # wordpress:
+  wordpress:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/ehay/data/wordpress
