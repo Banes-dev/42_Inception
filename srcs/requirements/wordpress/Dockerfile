@@ -14,6 +14,7 @@ RUN chown -R www-data:www-data /run/php
 
 # Cree dossier pour wordpress et ajuste les perms
 RUN mkdir -p /var/www/html
+RUN chmod -R 775 /var/www/html
 RUN chown -R www-data:www-data /var/www/html
 
 # Installation de Wordpress

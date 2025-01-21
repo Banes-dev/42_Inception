@@ -8,8 +8,11 @@ RUN apk update && apk upgrade && apk add --no-cache mariadb mariadb-client
 RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
 
 # Ajouter le script pour init bdd
-ADD tools/entry.sh /scripts/entry.sh
+COPY tools/entry.sh /scripts/entry.sh
 RUN chmod +x /scripts/entry.sh
+
+# Configurer mariadb
+ADD config/mariadb.conf /etc/my.cnf.d/mariadb-server.cnf
 
 # Exposer le port 3306 pour MariaDB
 EXPOSE 3306

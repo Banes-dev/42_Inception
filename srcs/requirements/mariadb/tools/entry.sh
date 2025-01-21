@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 # Démarrer MariaDB pour initialisation
@@ -11,7 +11,7 @@ while ! mysqladmin ping --silent; do
 done
 
 DB_EXISTS=$(mariadb -u root -e "SHOW DATABASES LIKE '$SQL_DB';" | grep "$SQL_DB")
-if [-z "$DB_EXISTS"]; then
+if [ -z "$DB_EXISTS" ]; then
 
 	# mariadb -u root -e "
 	# CREATE DATABASE IF NOT EXISTS $SQL_DB;
