@@ -16,7 +16,7 @@ clean:
 
 fclean:	clean
 	@docker system prune --force --volumes --all
-	@rm -rf $(DATA_DIR)
+	@sudo rm -rf $(DATA_DIR)
 
 re:	fclean all
 
@@ -25,7 +25,7 @@ re:	fclean all
 logs:
 	@echo "---------- MARIADB -----------\n"
 	@docker compose -f $(COMPOSE) logs mariadb
-	@echo "\n-------- WORDPRESS ----------\n"
-	@docker compose -f $(COMPOSE) logs wordpress
 	@echo "\n---------- NGINX ------------\n"
 	@docker compose -f $(COMPOSE) logs nginx
+	@echo "\n-------- WORDPRESS ----------\n"
+	@docker compose -f $(COMPOSE) logs wordpress

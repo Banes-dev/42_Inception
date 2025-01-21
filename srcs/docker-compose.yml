@@ -31,7 +31,21 @@ services:
     volumes:
       - wordpress:/var/www/html:ro
 
-  # wordpress:
+  wordpress:
+    container_name: wordpress
+    hostname: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    networks:
+      - inception
+    expose:
+      - 9000
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
 
 
 networks:
