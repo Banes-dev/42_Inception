@@ -40,5 +40,4 @@ else
 	echo "WordPress is already configured."
 fi
 
-# exec /usr/sbin/php-fpm82 -F
 exec php-fpm82 -F
