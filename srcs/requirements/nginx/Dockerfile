@@ -4,14 +4,19 @@ FROM alpine:3.19
 # Mise à jour et installation des dépendances nécessaires pour MariaDB
 RUN apk update && apk upgrade && apk add --no-cache nginx openssl
 
+# Crée le répertoire pour le site et mettre les perms
+RUN mkdir -p /var/www/html
+RUN chown -R nginx:nginx /var/www/html
+RUN chmod -R 755 /var/www/html
+
+# Copier le fichier de configuration Nginx
+COPY config/nginx.conf /etc/nginx/
+
 # Créer un certificat auto-signé pour HTTPS
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/ssl/private/cert.key \
     -out /etc/ssl/certs/cert.crt \
     -subj "/C=FR/ST=LeHavre/L=LeHavre/O=42/OU=42/CN=ehay.42.fr"
-
-# Copier le fichier de configuration Nginx
-COPY config/nginx.conf /etc/nginx/
 
 # Redirige les logs Nginx vers la sortie standard (stdout/stderr)
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \

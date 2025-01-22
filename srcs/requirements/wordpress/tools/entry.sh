@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Attendre que MariaDB soit prêt
+echo "Waiting for MariaDB to be ready..."
+while ! nc -z mariadb 3306; do
+    sleep 1
+done
+echo "MariaDB ready !"
+
 if [ ! -e "/var/www/html/wp-config.php" ]; then
 	echo "Configuration of WordPress..."
 
