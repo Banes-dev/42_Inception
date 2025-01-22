@@ -16,9 +16,9 @@ clean:
 
 fclean:	clean
 	@docker system prune --force --volumes --all
-	@docker run --rm -v /home/ehay/data:/data alpine sh -c "chmod -R u+w /data"
-	@docker run --rm -v $(DATA_DIR):/data alpine sh -c "rm -rf /data/*"
-	@rm -rf $(DATA_DIR)
+	# @docker run --rm -v /home/ehay/data:/data alpine sh -c "chmod -R u+w /data"
+	# @docker run --rm -v $(DATA_DIR):/data alpine sh -c "rm -rf /data/*"
+	@sudo rm -rf $(DATA_DIR)
 
 re:	fclean all
 
