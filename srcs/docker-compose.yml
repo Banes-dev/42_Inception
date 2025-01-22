@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - inception
+    expose:
+      - 3306
     restart: always
     env_file:
       - .env
@@ -23,7 +25,7 @@ services:
       dockerfile: Dockerfile
     networks:
       - inception
-    expose:
+    ports:
       - 443:443
     restart: always
     env_file:
@@ -41,6 +43,8 @@ services:
       dockerfile: Dockerfile
     networks:
       - inception
+    expose:
+      - 9000
     restart: always
     env_file:
       - .env
